@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProgramController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +17,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
+//home
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('program')->group(function () {
+    Route::get('{slug}',[ProgramController::class, 'index']);
+});
+
+Route::prefix('product')->group(function () {
+    Route::get('{slug}',[ProgramController::class, 'index']);
+});
+
+Route::get('/news/{slug}', [NewsController::class, 'index']);
+
+Route::get('/about-us',[AboutUsController::class, 'index']);
+
+Route::resource('contact-us', ContactUsController::class);

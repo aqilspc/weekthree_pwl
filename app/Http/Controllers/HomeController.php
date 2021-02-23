@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth'); // auth login dead
     }
 
     /**
@@ -23,6 +23,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data =
+        [
+            'title'=>'ITC | Homepage',
+            'slug'=>'ITC',
+            'server'=>'Our Products',
+            'app'=>'Our Program',
+            'web'=>'Our News',
+            'network'=>'About Us',
+            'contact'=>'Contact Us'
+        ];
+        return view('welcome',$data);
     }
 }
