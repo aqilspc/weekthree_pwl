@@ -30,7 +30,7 @@ Route::prefix('program')->group(function () {
 });
 
 Route::prefix('product')->group(function () {
-    Route::get('{slug}',[ProgramController::class, 'index']);
+    Route::get('{slug}',[ProductController::class, 'index']);
 });
 
 Route::get('/news/{slug}', [NewsController::class, 'index']);

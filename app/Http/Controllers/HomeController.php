@@ -33,6 +33,6 @@ class HomeController extends Controller
             'network'=>'About Us',
             'contact'=>'Contact Us'
         ];
-        return view('welcome',$data);
+        return view('home',$data);
     }
 }
